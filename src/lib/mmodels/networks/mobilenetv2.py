@@ -141,7 +141,11 @@ class MobileNetV2(nn.Module):
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
 
+        # todo for thunder
         input_channel = 32 * 1.75
+
+        # todo for lighting
+        input_channel = 32 * 1
         last_channel = 1280
 
         if inverted_residual_setting is None:

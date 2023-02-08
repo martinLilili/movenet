@@ -2,16 +2,21 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import sys
+
 import torch.utils.data as data
 import numpy as np
 import torch
 import json
 import cv2
 import os
-from utils.image import flip, color_aug
-from utils.image import get_affine_transform, affine_transform
-from utils.image import gaussian_radius, draw_umich_gaussian, draw_msra_gaussian
-from utils.image import draw_dense_reg
+
+# sys.path.append('lib')
+
+from src.lib.utils.image import flip, color_aug
+from src.lib.utils.image import get_affine_transform, affine_transform
+from src.lib.utils.image import gaussian_radius, draw_umich_gaussian, draw_msra_gaussian
+from src.lib.utils.image import draw_dense_reg
 import math
 
 class MultiPoseDataset(data.Dataset):

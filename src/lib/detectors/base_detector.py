@@ -2,13 +2,17 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import sys
+
 import cv2
 import numpy as np
 from progress.bar import Bar
 import time
 import torch
 
-from models.model import create_model, load_model
+sys.path.append('src')
+
+from mmodels.model import create_model, load_model
 from utils.image import get_affine_transform
 from utils.debugger import Debugger
 
@@ -20,7 +24,7 @@ class BaseDetector(object):
         else:
             opt.device = torch.device('cpu')
 
-        print('Creating model...')
+        print('Creating model...' + opt.arch)
         self.model = create_model(opt.arch, opt.heads,
                                   opt.head_conv, opt.froze_backbone)
         self.model = load_model(self.model, opt.load_model)
@@ -50,8 +54,12 @@ class BaseDetector(object):
                 image, int(diff//2), int(diff//2+diff%2), 0, 0,
                 cv2.BORDER_CONSTANT, value=(0,0,0))
 
-        new_height = 256#192
-        new_width = 256#192
+        new_height = 192
+        new_width = 192
+
+        # todo for thunder
+        # new_height = 256
+        # new_width = 256
 
         inp_height = new_height
         inp_width = new_width

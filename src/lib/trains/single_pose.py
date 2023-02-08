@@ -2,15 +2,19 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import sys
+
 import torch
 import numpy as np
 
-from models.losses import FocalLoss, RegL1Loss, RegLoss, RegWeightedL1Loss
-from models.decode import multi_pose_decode
-from models.utils import _sigmoid, flip_tensor, flip_lr_off, flip_lr
-from utils.debugger import Debugger
-from utils.post_process import multi_pose_post_process
-from utils.oracle_utils import gen_oracle_map
+sys.path.append('src')
+
+from src.lib.models.losses import FocalLoss, RegL1Loss, RegLoss, RegWeightedL1Loss
+from src.lib.models.decode import multi_pose_decode
+from src.lib.models.utils import _sigmoid, flip_tensor, flip_lr_off, flip_lr
+from src.lib.utils.debugger import Debugger
+from src.lib.utils.post_process import multi_pose_post_process
+from src.lib.utils.oracle_utils import gen_oracle_map
 from .base_trainer import BaseTrainer
 
 

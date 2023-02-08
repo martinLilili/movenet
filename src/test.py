@@ -13,11 +13,11 @@ from progress.bar import Bar
 import torch
 
 # from external.nms import soft_nms
-from opts import opts
-from logger import Logger
-from utils.utils import AverageMeter
-from datasets.dataset_factory import dataset_factory
-from detectors.detector_factory import detector_factory
+from lib.opts import opts
+from lib.logger import Logger
+from lib.utils.utils import AverageMeter
+from lib.datasets.dataset_factory import dataset_factory
+from lib.detectors.detector_factory import detector_factory
 
 
 def test(opt):

@@ -39,7 +39,10 @@ class MoveNet(nn.Module):
         self.backbone = backbone
         self.heads = heads
         self.ft_size = ft_size
+
+        print('__init__ ft_size {}.'.format(ft_size))
         self.weight_to_center = self._generate_center_dist(self.ft_size).unsqueeze(2)
+        print('__init__ weight_to_center {}.'.format(self.weight_to_center.shape))
  
         self.dist_y, self.dist_x = self._generate_dist_map(self.ft_size)
         self.index_17 = torch.arange(0, self.num_joints).float()
@@ -82,7 +85,7 @@ class MoveNet(nn.Module):
          # pose decode
         kpt_heatmap = torch.sigmoid(kpt_heatmap)
         center = torch.sigmoid(center)
-
+        print('decode center {}.'.format(x['hm'].shape))
         ct_ind = self._top_with_center(center)
 
         kpt_coor = self._center_to_kpt(kpt_regress, ct_ind)
@@ -185,6 +188,11 @@ def get_pose_net(heads, head_conv=96, froze_backbone=True, model_type = 'lightin
     else:
         ft_size = 64
     model = MoveNet(backbone, heads, head_conv=head_conv, ft_size = ft_size)
+
+    print('get_pose_net model_type {}.'.format(model_type))
+    print('get_pose_net head_conv {}.'.format(head_conv))
+    print('get_pose_net ft_size {}.'.format(ft_size))
+
     # froze
     '''for k,v in model.named_parameters():
         head_name = k.split('.')[0]
