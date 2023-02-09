@@ -30,8 +30,10 @@ def load_model(model, model_path, optimizer=None, resume=False,
     # print('loaded {}, epoch {}'.format(model_path, checkpoint['epoch']))
     if 'state_dict' in checkpoint.keys():
         state_dict = checkpoint['state_dict']
+        print('load_model11111')
     else:
         state_dict = checkpoint
+        print('load_mode22222')
 
     model_state_dict = model.state_dict()
 

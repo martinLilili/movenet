@@ -10,8 +10,8 @@ from progress.bar import Bar
 
 sys.path.append('src')
 
-from src.lib.models.data_parallel import DataParallel
-from src.lib.utils.utils import AverageMeter
+from mmodels.data_parallel import DataParallel
+from utils.utils import AverageMeter
 
 
 class ModelWithLoss(torch.nn.Module):

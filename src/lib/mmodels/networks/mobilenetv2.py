@@ -142,7 +142,7 @@ class MobileNetV2(nn.Module):
             norm_layer = nn.BatchNorm2d
 
         # todo for thunder
-        input_channel = 32 * 1.75
+        # input_channel = 32 * 1.75
 
         # todo for lighting
         input_channel = 32 * 1

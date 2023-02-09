@@ -77,6 +77,7 @@ class MoveNet(nn.Module):
         for head in self.heads:
             ret[head] = self.__getattr__(head)(x)
 
+        # todo 这里没有后处理，后处理在decode方法中
         return [ret]
 
     def decode(self, x):
